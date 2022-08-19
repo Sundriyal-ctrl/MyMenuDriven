@@ -7,15 +7,17 @@ class Test
         System.out.println(arr[i]);
         TestGet(arr,i=i+1);
     }
-    public void FindMax(int arr[])
+    public int FindMax(int arr[],Integer i,int index)
     {
-        int s=Integer.MIN_VALUE;
-        for (int i=0;i<arr.length;i++)
-        {
-            if(s<arr[i])
-                s=arr[i];
+        if(i>=arr.length)
+            return i;
+        else {
+            if(i<arr[index])
+                i=arr[index];
+            FindMax(arr,i,index=index+1);
         }
-        System.out.println(s);
+
+        return i;
     }
     public void ThridLargest(int arr[],int index)
     {
@@ -41,16 +43,18 @@ class Test
 }
 public class Driver {
     public static void main(String[] args) {
-        int arr[] = new int[]{2,15,1,100,70};
+        int arr[] = new int[]{90,15,1,100,70};
         Test t = new Test();
         System.out.println("==============First==================");
         t.TestGet(arr,0);
         System.out.println("==============Second=================");
-        t.FindMax(arr);
+        System.out.println(t.FindMax(arr,Integer.MIN_VALUE,0));
         System.out.println("==============Third===================");
         t.ThridLargest(arr,3);
         //Find the greatest value;
         //indivial
+        Integer ii[]= new Integer[5];
+
 
     }
 }
